@@ -1,0 +1,38 @@
+-- Quando fala do arquivo ts ele pode ser chamado de component, mas ao se referir ao html onde os usuarios interagem pode chamar template
+
+-- Para redenrizar no template o arquivo ts usa o [value]= "pensamento.conteudo". Isto se chama property binding. Existe outras formas de
+utilizar, {{ pensamento.conteudo }} esta é a outra forma, e é uma boa prática deixar um espaço em branco antes e no fim do texto dentro
+das chaves para facilitar a leitura desse código. Esta forma é usando property binding com interpolação.
+
+-- É possível criar events binding usando (click)="criarPensamento()" parentesis com o evento e o nome da função criado no component. Só
+que funciona ao contrário do property binding, pois aqui é o template que chama a função quando o usuário interage na página
+
+-- O one-way data binding onde não ocorre esse dinamismo de atualização simultânea. O two-way data binding permite que seja atualizado o
+template e o component simultaneamente, usando o [(ngModel)]="pensamento.conteudo".
+
+-- Para utilizar rotas no angular usa o <router-outlet></router-outlet> no template e diz faz a configuração para ser rendirizado dinami
+camente. É como se fosse um espaço reservado. No arquivo app-routing.module.ts é realizado esta configuração. É necessário passar o
+path que é o caminho e o nome do componente. O path é a url de acesso e o componente vai ser redenrizado no template ao acessar a url ou
+a melhor dizendo a rota. Quando for criado um path vazio é necessário colocar na estrutura o pathMatch. O patchMatch aceita dois valores:
+o prefix e o full. O full lê toda a url http://localhost:4200/listarPensamento enquanto o prefix apenas esta parte da url http://localhost:4200/
+Abaixo segue a estrutura de como é feito quando o path é criado vazio:
+
+path: '',redirectTo: 'listarPensamento', pathMatch: 'full'
+
+-- Isto se chama interpolação <img src="/assets/images{{ pensamento.modelo }}.png" alt="Aspas coloridas">
+
+-- Para renderizar vários elementos com a mesma estrutura básica usa o *ngFor="".
+
+-- Para que o componente filho receba as informações da classe mãe usa o decorator @Input antes do objeto pensamento.
+
+-- Um dumb Component é um component que recebe informações de outros, com o fim de apenas redenrizar na tela sem a preocupação de como
+os dados foram obtidos, e nao tem lógica de negócio.
+
+-- NgClass serve para redenrizar uma classe css com condicionais.
+
+-- No service que fica a logica de negocio e comunicacao com o back/servidor. O comando para criar é o ng generate service e o caminho.
+mas para encurtar fica ng g s e o caminho.
+
+-- A injeção de dependências no angular é feita no construtor
+
+-- ngOnInit faz parte do ciclo de vida de um component. A lógica que o componente terá logo ao executar será colocado nesse método
